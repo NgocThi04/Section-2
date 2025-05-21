@@ -1,0 +1,21 @@
+﻿@model IEnumerable<CoffeeShop.Models.Product>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Trending Coffee</title>
+</head>
+<body>
+    <h1>Trending Products</h1>
+
+    @foreach (var item in Model)
+    {
+        <div style="margin-bottom: 20px;">
+            <img width="150" src="@item.ImageUrl" alt="@item.Name" />
+            <h3>@item.Name</h3>
+            <p>Price: @item.Price.ToString("C")</p>
+            <p>@item.Detail</p>
+        </div>
+    }
+</body>
+</html>

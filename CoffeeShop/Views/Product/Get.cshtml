@@ -1,0 +1,14 @@
+﻿@model CoffeeShop.Models.Product
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Coffee Shop</title>
+</head>
+<body>
+    <h1>@Model.Name</h1>
+    <img width="300" src="@Model.ImageUrl" alt="@Model.Name" />
+    <p>Giá: @Model.Price.ToString("C")</p>
+    <p>Mô tả: @Model.Detail</p>
+</body>
+</html>
