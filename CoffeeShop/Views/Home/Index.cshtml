@@ -60,9 +60,12 @@
                             </h6>
                             <p class="abr-text abr-fonts-style mt-3 display-7">@item.Price.ToString("c")</p>
                         </a>
-                        <div class="abr-section-btn item-footer st-2">
-                            <a href="" class="btn item-btn btn-primary display-4" target="self">
-                                <span class="abrib-cart-add abr-iconfont mbr-iconfont-btn"></span>Add to cart
+                        <div class="mbr-section-btn item-footer mt-2">
+                            <a asp-controller="ShoppingCart"
+                               asp-action="AddToShoppingCart"
+                               asp-route-pId="@item.Id"
+                               class="btn item-btn btn-primary display-4">
+                                <span class="mbrib-cart-add mbr-iconfont mbr-iconfont-btn"></span> Add to cart
                             </a>
                         </div>
                     </div>

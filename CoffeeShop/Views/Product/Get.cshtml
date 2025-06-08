@@ -8,14 +8,14 @@
         <div class="row align-items-center">
             <div class="col-12 col-lg-6">
                 <div class="image-wrapper">
-                    <img src="~/assets/images/mohammad-amirahmadi-tk2ifgn60xo-unsplash-815x1019.jpg"
-                         alt="Website Builder">
+                    <img src="@Model.ImageUrl" 
+                         alt="@Model.Price">
                 </div>
             </div>
             <div class="col-12 col-lg">
                 <div class="text-box">
                     <h5 class="mbr-title mbr-fonts-style display-2">
-                        <strong>Special Offer</strong>
+                        <strong>@Model.Name</strong>
                     </h5>
                     <p class="mbr-text mbr-fonts-style display-7">
                         Lorem ipsum dolor sit amet, consectetur adipiscing
@@ -27,11 +27,14 @@
                         faucibus tempus, est erat malesuada augue, euismod euismod massa quam a magna.
                     </p>
                     <div class="cost">
-                        <span class="currentcost mbr-fonts-style pr-2 display-2">$69</span>
+                        <span class="currentcost mbr-fonts-style pr-2 display-2">@Model.Price</span>
                     </div>
-                    <div class="mbr-section-btn pt-3">
-                        <a href="" class="btn btn-primary display-4">
-                            <span class="mbrib-cart-add mbr-iconfont mbr-iconfont-btn"></span>Add to cart&nbsp;
+                    <div class="mbr-section-btn item-footer mt-2">
+                        <a asp-controller="ShoppingCart"
+                           asp-action="AddToShoppingCart"
+                           asp-route-pId="@Model.Id"
+                           class="btn item-btn btn-primary display-4">
+                            <span class="mbrib-cart-add mbr-iconfont mbr-iconfont-btn"></span> Add to cart
                         </a>
                     </div>
                 </div>
