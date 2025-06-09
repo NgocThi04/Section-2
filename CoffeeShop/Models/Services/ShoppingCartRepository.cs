@@ -51,7 +51,6 @@ namespace CoffeeShop.Models.Services
                 shoppingCartItem.Qty++;
             }
             dbContext.SaveChanges();
-            UpdateCartCount();
         }
 
         public void ClearCart()
@@ -60,7 +59,6 @@ namespace CoffeeShop.Models.Services
             var cartItems = dbContext.ShoppingCartItems.Where(s => s.ShoppingCartId == ShoppingCartId);
             dbContext.ShoppingCartItems.RemoveRange(cartItems);
             dbContext.SaveChanges();
-            UpdateCartCount();
         }
 
         public List<ShoppingCartItem> GetAllShoppingCartItems()
@@ -93,17 +91,9 @@ namespace CoffeeShop.Models.Services
                 }
             }
             dbContext.SaveChanges();
-            UpdateCartCount();
             return quantity;
         }
-        private void UpdateCartCount()
-        {
-            int cartCount = dbContext.ShoppingCartItems
-                .Where(i => i.ShoppingCartId == ShoppingCartId)
-                .Sum(i => i.Qty);
-
-        _httpContextAccessor.HttpContext?.Session.SetInt32("CartCount", cartCount);
-        }
+        
 
 }
     
