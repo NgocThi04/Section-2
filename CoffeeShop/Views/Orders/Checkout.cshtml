@@ -1,7 +1,7 @@
-﻿@model Order
+﻿@model CoffeeShop.Models.Order
+
 <form asp-action="Checkout" method="post" role="form">
     <section data-bs-version="5.1" class="form6 cid-tsFfsp7eqK" id="form6-n">
-
 
         <div class="container">
             <div class="mt-5">
@@ -13,48 +13,58 @@
                     <!-- First Name-->
                     <div class="col-sm-6">
                         <div class="form-group">
-                            <label for="firstNameBilling" class="form-label">First name</label>
-                            <input type="text" class="form-control" id="firstNameBilling" placeholder="" value="" required="">
+                            <label asp-for="FirstName" class="form-label">First name</label>
+                            <input asp-for="FirstName" class="form-control" />
+                            <span asp-validation-for="FirstName" class="text-danger"></span>
                         </div>
                     </div>
 
                     <!-- Last Name-->
                     <div class="col-sm-6">
                         <div class="form-group">
-                            <label for="lastNameBilling" class="form-label">Last name</label>
-                            <input type="text" class="form-control" id="lastNameBilling" placeholder="" value="" required="">
+                            <label asp-for="LastName" class="form-label">Last name</label>
+                            <input asp-for="LastName" class="form-control" />
+                            <span asp-validation-for="LastName" class="text-danger"></span>
                         </div>
                     </div>
 
                     <!-- Email-->
                     <div class="col-sm-6">
                         <div class="form-group">
-                            <label for="email" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="email" placeholder="">
+                            <label asp-for="Email" class="form-label">Email</label>
+                            <input asp-for="Email" class="form-control" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
                         </div>
                     </div>
-                    <!-- phone-->
+
+                    <!-- Phone-->
                     <div class="col-sm-6">
                         <div class="form-group">
-                            <label for="phone" class="form-label">Phone</label>
-                            <input type="tel" class="form-control" id="phone" placeholder="">
+                            <label asp-for="Phone" class="form-label">Phone</label>
+                            <input asp-for="Phone" class="form-control" />
+                            <span asp-validation-for="Phone" class="text-danger"></span>
                         </div>
                     </div>
+
                     <!-- Address-->
                     <div class="col-12">
                         <div class="form-group">
-                            <label for="address" class="form-label">Address</label>
-                            <input type="text" class="form-control" id="address" placeholder="123 Some Street Somewhere"></input>
+                            <label asp-for="Address" class="form-label">Address</label>
+                            <input asp-for="Address" class="form-control" />
+                            <span asp-validation-for="Address" class="text-danger"></span>
                         </div>
                     </div>
-                    <!-- Place Order-->
                 </div>
 
-                <div class="col-auto mbr-section-btn align-center">
+                <!-- Submit Button-->
+                <div class="col-auto mbr-section-btn align-center mt-4">
                     <button type="submit" class="btn btn-primary display-4">Place Order</button>
                 </div>
-
             </div>
         </div>
     </section>
 </form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
