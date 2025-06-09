@@ -1,8 +1,9 @@
-﻿using CoffeeShop;
+using CoffeeShop;
 using CoffeeShop.Models.Interfaces;
 using CoffeeShop.Models.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,8 +19,11 @@ builder.Services.AddScoped<IShoppingCartRepository>(sp => ShoppingCartRepository
 builder.Services.AddDbContext<CoffeeShopDbContext>(option =>
     option.UseSqlServer(builder.Configuration.GetConnectionString("CoffeeShopDbContextConnection")));
 
+builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false).AddEntityFrameworkStores<CoffeeShopDbContext>();
 
-builder.Services.AddDistributedMemoryCache();
+
+builder.Services.AddDistributedMemoryCache();   
+builder.Services.AddRazorPages();
 
 var app = builder.Build();
 
@@ -32,8 +36,12 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
+app.MapRazorPages();
+
 
 app.UseRouting();
+app.UseAuthentication();
+
 
 app.UseSession();
 
